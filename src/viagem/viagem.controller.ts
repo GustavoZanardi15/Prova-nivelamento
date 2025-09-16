@@ -8,35 +8,50 @@ import {
   Put,
 } from '@nestjs/common';
 import { ViagemService } from './viagem.service';
-import { CreateViagemDto } from './dto/create-viagem.dto';
-import { UpdateViagemDto } from './dto/update-viagem.dto';
+import { CreateDestinoDto } from './dto/create-destino.dto';
 
 @Controller('viagens')
 export class ViagemController {
-  constructor(private readonly ViagemService: ViagemService) {}
+  constructor(private readonly viagensService: ViagemService) {}
 
   @Post()
-  create(@Body() createViagemDto: CreateViagemDto) {
-    return this.ViagemService.create(createViagemDto);
+  createViagem(@Body() payload: any) {
+    return this.viagensService.createViagem(payload);
   }
 
   @Get()
   findAll() {
-    return this.ViagemService.findAll();
+    return this.viagensService.findAllViagens();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.ViagemService.findOne(id);
+    return this.viagensService.findOneViagem(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateViagemDto: UpdateViagemDto) {
-    return this.ViagemService.update(id, updateViagemDto);
+  update(@Param('id') id: string, @Body() payload: any) {
+    return this.viagensService.updateViagem(id, payload);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ViagemService.remove(id);
+    return this.viagensService.removeViagem(id);
+  }
+
+  @Post(':id/destinos')
+  addDestino(
+    @Param('id') id: string,
+    @Body() createDestinoDto: CreateDestinoDto,
+  ) {
+    return this.viagensService.addDestinoToViagem(id, createDestinoDto);
+  }
+
+  @Delete(':id/destinos/:destinoId')
+  removeDestino(
+    @Param('id') id: string,
+    @Param('destinoId') destinoId: string,
+  ) {
+    return this.viagensService.removeDestinoFromViagem(id, destinoId);
   }
 }

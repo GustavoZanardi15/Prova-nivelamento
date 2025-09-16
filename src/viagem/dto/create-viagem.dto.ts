@@ -10,7 +10,7 @@ export class CreateViagemDto {
   @IsOptional()
   @Type(() => Date)
   @IsDate()
-  dataSaida: Date;
+  dataSaida?: Date;
 
   @IsOptional()
   @Type(() => Date)

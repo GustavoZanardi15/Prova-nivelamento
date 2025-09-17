@@ -49,7 +49,7 @@ export default function ViagemList() {
             </div>
             <button
               onClick={() => handleDelete(viagem._id)}
-              className="mt-2 bg-red-500 text-white px-2 py-1 rounded"
+              className="px-2 py-1 rounded"
             >
               Excluir
             </button>

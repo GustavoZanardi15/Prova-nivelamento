@@ -18,8 +18,8 @@ export class Viagem {
   @Prop({ type: Number })
   valor?: number;
 
-  @Prop({ type: [{ type: Types.ObjectId, ref: 'Destino' }], default: [] })
-  destinos: Types.ObjectId[] | Destino[];
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Destino' }] })
+  destinos: Destino[];
 }
 
 export const ViagemSchema = SchemaFactory.createForClass(Viagem);

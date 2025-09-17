@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { ViagemService } from './viagem.service';
 import { CreateDestinoDto } from './dto/create-destino.dto';
+import { NOMEM } from 'dns';
 
 @Controller('viagens')
 export class ViagemController {
